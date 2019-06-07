@@ -1,3 +1,6 @@
 # PlacesBot
 <br>
-<h2>Use join surrounded-kitchen</h2>
+<ol>
+  <li>Add number +14155238886</li>
+  <li>Send join surrounded-kitchen
+  </ol>
