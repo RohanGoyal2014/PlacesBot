@@ -37,11 +37,8 @@ def detect_intent_from_text(text, session_id, language_code='en'):
     return response.query_result
 
 def get_places(parameters):
-    print(parameters) 
-    geo_country = parameters.get('geo-country-code','')
-    geo_city = parameters.get('geo-city','')
-    place_type = parameters.get('place type','')
-    r = requests.get(url + 'query=places+' + place_type + '+' + geo_city + '+' + geo_country +
+    # print(parameters) 
+    r = requests.get(url + 'query=' + parameters  +
                         '&key=' + get_api_key())
 
     data = dict(r.json())
@@ -81,7 +78,7 @@ def fetch_reply(msg, session_id):
     try:
         response = detect_intent_from_text(msg, session_id)
         if response.intent.display_name == "get_places":
-            places = get_places(dict(response.parameters))
+            places = get_places(msg)
             saveToDatabase(msg, session_id)
             
             if len(places) == 0:
